@@ -2,7 +2,7 @@ name: My Angular App
 
 on:
   push:
-    branches: [main]  # Space added
+    branches: [main]
 
 jobs:
   angular-job:
@@ -14,10 +14,13 @@ jobs:
       - name: Setup Node JS
         uses: actions/setup-node@v3.9.1
         with:
-          node-version: 22.x
+          node-version: 18.x  # use 22.x only if you're sure your project supports it
 
       - name: Install dependencies
         run: npm install
+
+      - name: Install Angular CLI
+        run: npm install -g @angular/cli
 
       - name: Build angular app
         run: npm run build
